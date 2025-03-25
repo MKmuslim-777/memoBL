@@ -24,10 +24,55 @@
     font-family: 'Hind Siliguri', sans-serif;
 }
 
+/* Enhanced dynamic water-like background animation */
 body {
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: linear-gradient(135deg, #e0f7fa 0%, #80deea 50%, #26c6da 100%);
     min-height: 100vh;
     padding: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+body::before, body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 25%, transparent 70%);
+    opacity: 0.4;
+    pointer-events: none;
+    animation: waterEffect1 8s infinite linear;
+}
+
+body::after {
+    animation: waterEffect2 12s infinite linear;
+    opacity: 0.2;
+}
+
+@keyframes waterEffect1 {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        transform: translate(-45%, -45%) scale(1.2);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes waterEffect2 {
+    0% {
+        transform: translate(-55%, -55%) scale(1.1);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.3);
+    }
+    100% {
+        transform: translate(-55%, -55%) scale(1.1);
+    }
 }
 
 /* মেমো কন্টেইনার */
@@ -324,6 +369,94 @@ button:active {
     transform: scale(1.1);
     background: var(--secondary);
 }
+
+/* মোবাইল রেস্পন্সিভ ডিজাইন */
+@media (max-width: 768px) {
+    .memo-container {
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .header {
+        padding: 15px;
+    }
+
+    .logo {
+        padding: 8px 15px;
+        font-size: 20px;
+    }
+
+    .info-box {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    #items-table th, #items-table td {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    .add-item-form {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .animate-input {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    button {
+        width: 100%;
+        justify-content: center;
+        font-size: 14px;
+    }
+
+    .footer {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .total-box h2 {
+        font-size: 20px;
+    }
+
+    .language-toggle {
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-text {
+        font-size: 18px;
+    }
+
+    .logo-subtext {
+        font-size: 12px;
+    }
+
+    .info-box p {
+        font-size: 12px;
+    }
+
+    .footer .floating-icon {
+        display: none;
+    }
+
+    .language-toggle {
+        top: 8px;
+        right: 8px;
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+}
     </style>
 </head>
 <body>
@@ -386,6 +519,7 @@ button:active {
             <button onclick="window.print()" class="btn-print">
                 <i class="fas fa-print"></i> Printe
             </button>
+            <p style="margin-top: 10px; font-size: 12px; color: #555;">&copy; 2023 Muslim_uddin_mk</p>
         </div>
     </div>
 
