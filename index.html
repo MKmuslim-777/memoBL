@@ -228,8 +228,14 @@ button:active {
         width: 100%;
         box-shadow: none;
     }
-    .add-item-form, button {
-        display: none !important;
+    .add-item-form, button, #items-table th:nth-child(6), #items-table td:nth-child(6) {
+        display: none !important; /* Hide Action column */
+    }
+    .total-box {
+        text-align: right;
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 20px;
     }
 }
 
